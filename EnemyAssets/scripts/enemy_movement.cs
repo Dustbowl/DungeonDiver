@@ -33,10 +33,10 @@ public class enemy_movement : MonoBehaviour
 
         isAgro = false;
         distToPlayer = Vector2.Distance(transform.position, player.position);
-        Vector3 direction = player.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        rb.rotation = angle;
-        direction.Normalize();
+        //Vector3 direction = player.position - transform.position;
+        //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        //rb.rotation = angle;
+        //direction.Normalize();
 
         if (distToPlayer <= agroRange)
         {
