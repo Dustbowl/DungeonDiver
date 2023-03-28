@@ -39,6 +39,8 @@ public class Player_Movement : MonoBehaviour
         animator.SetFloat("Horizontal", moveX);
         animator.SetFloat("Verical", moveY);
         animator.SetFloat("Speed", moveDirection.magnitude);
+
+        OnFire();
     }
 
     void Move()
@@ -46,5 +48,13 @@ public class Player_Movement : MonoBehaviour
         rb.velocity = new Vector2(moveDirection.x * speed, moveDirection.y * speed);
     }
 
+    void OnFire()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            animator.SetTrigger("SwordAttack");
+            print("hi");
+        }
+    }
 
 }
