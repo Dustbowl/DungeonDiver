@@ -62,6 +62,9 @@ public class player_life : MonoBehaviour
             PlayerController.moveSpeed= playerSpeed;
 
             Destroy(other.gameObject);
+        } else if (other.tag == "enemy_melee")
+        {
+            health--;
         }
 
     }

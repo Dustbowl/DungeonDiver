@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
             health = value;
 
             if(health <= 0) {
-                Defeated();
+                RemoveEnemy();
             }
         }
         get {
