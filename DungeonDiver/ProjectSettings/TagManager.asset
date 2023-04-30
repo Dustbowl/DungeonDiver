@@ -3,14 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Enemy
-  - bullet
-  - player
-  - playerBullet
-  - Harmful
-  - Exit
-  - DungeonGenerator
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -47,16 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Ground
-    uniqueID: 3277990563
-    locked: 0
-  - name: Background
-    uniqueID: 3072431375
-    locked: 0
-  - name: Entity
-    uniqueID: 285613901
-    locked: 0
-  - name: UI
-    uniqueID: 3633533023
     locked: 0
