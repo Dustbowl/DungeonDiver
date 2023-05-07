@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 2243195368364633551}
   m_Layer: 0
   m_Name: swordHitbox
-  m_TagString: enemy_melee
+  m_TagString: boos_melee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,8 +160,9 @@ GameObject:
   - component: {fileID: 5926743992427828771}
   - component: {fileID: 6752432568930984421}
   - component: {fileID: 8493954869201075532}
-  - component: {fileID: 6808243191497301041}
   - component: {fileID: 1357975973590039385}
+  - component: {fileID: 1502619646950758758}
+  - component: {fileID: 1334947266528599637}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Enemy
@@ -302,19 +303,6 @@ MonoBehaviour:
   timer: 0
   leftLimit: {fileID: 0}
   rightLimit: {fileID: 0}
---- !u!114 &6808243191497301041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7765719546737840516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83c90bf07aceeb84d8b6ab94862b5251, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
 --- !u!61 &1357975973590039385
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -341,3 +329,40 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.74114823, y: 1.7529275}
   m_EdgeRadius: 0
+--- !u!114 &1502619646950758758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7765719546737840516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74983a5dcf158645adee66290ab7297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayCast: {fileID: 4352152890950091995}
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 0
+  rayCastLength: 2
+  attackDistance: 4
+  moveSpeed: 3
+  timer: 0
+  leftLimit: {fileID: 0}
+  rightLimit: {fileID: 0}
+  bullet: {fileID: 2266116361480585102, guid: 8bfc12092bee67443b94d6796736095e, type: 3}
+--- !u!114 &1334947266528599637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7765719546737840516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 334c0b942fc02394db3b49dd88aa1070, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  currentHealth: 20

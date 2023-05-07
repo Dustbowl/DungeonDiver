@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 // Takes and handles input and movement for a player character
 public class PlayerController : MonoBehaviour
 {
-    public static float moveSpeed = 2.5f;
+    public static float moveSpeed = 3f;
     public float collisionOffset = 0.05f;
     public ContactFilter2D movementFilter;
     public SwordAttack swordAttack;
@@ -19,12 +19,16 @@ public class PlayerController : MonoBehaviour
 
     bool canMove = true;
 
+    AudioSource aud;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        aud= GetComponent<AudioSource>();
+
     }
 
     private void FixedUpdate() {
@@ -107,5 +111,10 @@ public class PlayerController : MonoBehaviour
 
     public void UnlockMovement() {
         canMove = true;
+    }
+
+    private void playSound()
+    {
+        aud.Play();
     }
 }

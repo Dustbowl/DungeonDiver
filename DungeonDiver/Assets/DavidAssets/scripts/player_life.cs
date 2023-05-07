@@ -97,6 +97,11 @@ public class player_life : MonoBehaviour
             currentHealth--;
             healthBar.SetHealth(currentHealth);
         }
+        else if (other.tag == "boss_melee")
+        {
+            currentHealth-=3;
+            healthBar.SetHealth(currentHealth);
+        }
     }
     private void death()
     {
