@@ -24,6 +24,7 @@ public class RoomInitialGeneration : RandomWalkDungeonGenerator
         CreateRooms();
         entityManager.SpawnPlayer(ref roomDictionary);
         entityManager.SpawnEnemies(roomDictionary);
+        entityManager.SpawnItems(roomDictionary);
         entityManager.PlaceExit(roomDictionary);
     }
 

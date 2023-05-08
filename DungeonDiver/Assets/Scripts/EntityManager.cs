@@ -6,12 +6,18 @@ public class EntityManager : MonoBehaviour
 {
     [SerializeField]
     private EnemyPool spawnPool;
+    [SerializeField]
+    private ItemPool itemSpawnPool;
     public GameObject player;
     public GameObject exit;
     public Canvas canvas;
     private GameObject GetRandomEnemy()
     {
         return spawnPool.enemyPool[Random.Range(0, spawnPool.enemyPool.Length)];
+    }
+    private GameObject GetRandomItem()
+    {
+        return itemSpawnPool.itemPool[Random.Range(0, itemSpawnPool.itemPool.Length)];
     }
 
     public void SpawnPlayer(ref Dictionary<Vector2Int, HashSet<Vector2Int>> roomDictionary)
@@ -33,7 +39,7 @@ public class EntityManager : MonoBehaviour
         {
             List<Vector2Int> positions = new List<Vector2Int>(room);
             int count = 0;
-            while (count < 4)
+            while (count < 3)
             {
                 Vector2Int randomPosition = positions[Random.Range(0, positions.Count)];
                 if(room.Contains(randomPosition+Vector2Int.left) && 
@@ -49,6 +55,34 @@ public class EntityManager : MonoBehaviour
         foreach(Vector3Int spawnPoint in enemySpawnPoints)
         {
             Instantiate(GetRandomEnemy(), spawnPoint, Quaternion.identity);
+        }
+    }
+    public void SpawnItems(Dictionary<Vector2Int, HashSet<Vector2Int>> roomDictionary)
+    {
+        ClearEntities("damagePotion");
+        ClearEntities("healthPotion");
+        ClearEntities("speedPotion");
+        HashSet<Vector3Int> itemSpawnPoints = new HashSet<Vector3Int>();
+        foreach (HashSet<Vector2Int> room in roomDictionary.Values)
+        {
+            List<Vector2Int> positions = new List<Vector2Int>(room);
+            int count = 0;
+            while (count < 2)
+            {
+                Vector2Int randomPosition = positions[Random.Range(0, positions.Count)];
+                if (room.Contains(randomPosition + Vector2Int.left) &&
+                   room.Contains(randomPosition + Vector2Int.down) &&
+                   room.Contains(randomPosition + Vector2Int.left + Vector2Int.down))
+                {
+                    positions.Remove(randomPosition);
+                    itemSpawnPoints.Add((Vector3Int)randomPosition + Vector3Int.back);
+                    count++;
+                }
+            }
+        }
+        foreach (Vector3Int spawnPoint in itemSpawnPoints)
+        {
+            Instantiate(GetRandomItem(), spawnPoint, Quaternion.identity);
         }
     }
     private void ClearEntities(string name)

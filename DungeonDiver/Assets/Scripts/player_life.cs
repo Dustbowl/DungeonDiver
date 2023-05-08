@@ -18,6 +18,8 @@ public class player_life : MonoBehaviour
     private float dmg = SwordAttack.damage;
     private float playerSpeed = PlayerController.moveSpeed;
     public bool invuln = false;
+    public bool speedBoost = false;
+    private float speedDuration = 0f;
     private float invulnDuration = 0f;
     private float invulnCD = 0f;
     // Start is called before the first frame update
@@ -31,6 +33,10 @@ public class player_life : MonoBehaviour
 
     private void Update()
     {
+        if(speedBoost)
+        {
+            TickSpeed();
+        }
         if(invulnCD > 0)
         {
             invulnCD -= Time.deltaTime;
@@ -45,6 +51,21 @@ public class player_life : MonoBehaviour
         if (currentHealth <= 0)
         {
             death();
+        }
+    }
+    public void SpeedBoost()
+    {
+            speedBoost = true;
+            speedDuration = 5f;
+            PlayerController.moveSpeed = playerSpeed + 2f;
+    }
+    private void TickSpeed()
+    {
+        speedDuration -= Time.deltaTime;
+        if (speedDuration <= 0)
+        {
+            speedBoost = false;
+            PlayerController.moveSpeed = playerSpeed;
         }
     }
     public void Invuln()
@@ -106,8 +127,11 @@ public class player_life : MonoBehaviour
 
         if (other.tag == "healthPotion")
         {
-            print("health:" + currentHealth);
-            currentHealth++;
+            //print("health:" + currentHealth);
+            if (currentHealth<maxHealth)
+            {
+                currentHealth++;
+            }
             print(currentHealth);
             Destroy(other.gameObject);
             healthBar.SetHealth(currentHealth);
@@ -128,8 +152,7 @@ public class player_life : MonoBehaviour
         {
             print(playerSpeed);
 
-            playerSpeed += .5f;
-            PlayerController.moveSpeed = playerSpeed;
+            SpeedBoost();
 
             Destroy(other.gameObject);
         }

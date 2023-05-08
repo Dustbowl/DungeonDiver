@@ -23,8 +23,10 @@ public class ScoreManager : MonoBehaviour
     }
     private void Start()
     {
+        Time.timeScale = 1f;
         // Starts the timer automatically
         active = true;
+
     }
     void Update()
     {
@@ -60,11 +62,17 @@ public class ScoreManager : MonoBehaviour
         scoreMenu.SetActive(true);
         
         int score = enemiesKilled * 100 + floorNumber * 1000;
-        if (floorNumber >= 5)
+        if (floorNumber >= 10)
         {
             score = score * 3;
+            scoreText.text = string.Format("GAME COMPlETE\nTime Remaining: {0}\nFloor Reached: {1}\nEnemies Killed: {2}\nOverall Score: {3}", timeText.text, floorNumber, enemiesKilled, score);
+        } else
+        {
+            scoreText.text = string.Format("GAME OVER\nTime Remaining: {0}\nFloor Reached: {1}\nEnemies Killed: {2}\nOverall Score: {3}", timeText.text, floorNumber, enemiesKilled, score);
         }
-        scoreText.text = string.Format("Time Remaining: {0}\nFloor Reached: {1}\nEnemies Killed: {2}\nOverall Score: {3}", timeText.text, floorNumber, enemiesKilled, score);
+
+        
+        Time.timeScale = 0f;
     }
     public void Quit()
     {

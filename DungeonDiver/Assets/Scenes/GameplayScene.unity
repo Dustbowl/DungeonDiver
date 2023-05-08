@@ -5297,6 +5297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPool: {fileID: 11400000, guid: 0cbfab09d4b9b1648a845b73864c12c0, type: 2}
+  itemSpawnPool: {fileID: 11400000, guid: 1b606e1b70dff1e4e997cea0fa995616, type: 2}
   player: {fileID: 1891725702}
   exit: {fileID: 6754901331107017805, guid: 6c8b32e2db1442f41b16e16ebf0c58fe, type: 3}
   canvas: {fileID: 1777928997}
@@ -5483,9 +5484,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemapPainter: {fileID: 336671531}
   startPosition: {x: 0, y: 0}
-  generationParameters: {fileID: 11400000, guid: b4efda0405db4bf41a1fe64d2178a763, type: 2}
-  minRoomWidth: 16
-  minRoomHeight: 16
+  generationParameters: {fileID: 11400000, guid: d2db2c36c162943419094174b2bccfc2, type: 2}
+  minRoomWidth: 20
+  minRoomHeight: 20
   dungeonWidth: 80
   dungeonHeight: 60
   offset: 1
@@ -11465,7 +11466,10 @@ MonoBehaviour:
 
     Right - D
 
-    Attack - LMB'
+    Attack - LMB
+
+    Special
+    - RMB'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
