@@ -97,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3198552053022977350, guid: cca0b91cef6010e45a4dbee31631cf82, type: 3}
       propertyPath: m_SortingLayerID
-      value: 285613901
+      value: -379454301
       objectReference: {fileID: 0}
     - target: {fileID: 3198552053022977351, guid: cca0b91cef6010e45a4dbee31631cf82, type: 3}
       propertyPath: m_RootOrder
@@ -157,7 +157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3198552053022977355, guid: cca0b91cef6010e45a4dbee31631cf82, type: 3}
       propertyPath: m_Name
-      value: Player 1.1
+      value: Player 1.1 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3198552053022977355, guid: cca0b91cef6010e45a4dbee31631cf82, type: 3}
       propertyPath: m_TagString

@@ -30,6 +30,7 @@ public class FloorExitScript : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player") && progress >= maxKillCount)
         {
+            print("entered exit");
             time = 5;
         }
     }
@@ -37,7 +38,9 @@ public class FloorExitScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && progress >= maxKillCount)
         {
+            
             time -= Time.deltaTime;
+            print("time = "+time);
             if (time <= 0f)
             {
                 ExitFloor();
@@ -56,6 +59,8 @@ public class FloorExitScript : MonoBehaviour
     }
     private void ExitFloor()
     {
+        GameObject scoreManager = GameObject.FindWithTag("Score");
+        scoreManager.GetComponent<ScoreManager>().IncreaseFloor();
         GameObject.FindWithTag("DungeonGenerator").GetComponent<RoomInitialGeneration>().GenerateDungeon();
     }
 }

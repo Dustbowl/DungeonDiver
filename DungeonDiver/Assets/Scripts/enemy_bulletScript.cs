@@ -36,7 +36,9 @@ public class enemy_bulletScript : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            other.GetComponent<player_life>().takeDamage();
             Destroy(gameObject);
         }
+
     }
 }

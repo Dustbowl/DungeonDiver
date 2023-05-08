@@ -15,10 +15,16 @@ public class RoomInitialGeneration : RandomWalkDungeonGenerator
     private int offset = 1;
     [SerializeField]
     private bool randomWalkRooms = false;
+    private Dictionary<Vector2Int, HashSet<Vector2Int>> roomDictionary = new Dictionary <Vector2Int, HashSet<Vector2Int>>();
+    public EntityManager entityManager;
 
     protected override void RunGeneration()
     {
+        roomDictionary.Clear();
         CreateRooms();
+        entityManager.SpawnPlayer(ref roomDictionary);
+        entityManager.SpawnEnemies(roomDictionary);
+        entityManager.PlaceExit(roomDictionary);
     }
 
     private void CreateRooms()
@@ -121,14 +127,17 @@ public class RoomInitialGeneration : RandomWalkDungeonGenerator
         {
             var roomCenter = new Vector2Int(Mathf.RoundToInt(room.center.x), Mathf.RoundToInt(room.center.y));
             var roomFloor = RunRandomWalk(generationParameters, roomCenter);
+            HashSet<Vector2Int> roomTemp = new HashSet<Vector2Int>();
             foreach(var position in roomFloor)
             {
                 if(position.x >= (room.xMin + offset) && position.x <= (room.xMax - offset) &&
                     position.y >= (room.yMin + offset) && position.y <= (room.yMax - offset))
                 {
+                    roomTemp.Add(position);
                     floor.Add(position);
                 }
             }
+            roomDictionary.Add(roomCenter, roomTemp);
         }
         return floor;
     }

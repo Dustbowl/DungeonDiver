@@ -4,13 +4,18 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
-  - bullet
-  - player
-  - playerBullet
-  - Harmful
-  - Exit
+  - playerSword
   - DungeonGenerator
+  - Enemy
+  - Exit
+  - Harmful
+  - bullet
+  - enemy_melee
+  - damagePotion
+  - healthPotion
+  - speedPotion
+  - boos_melee
+  - Score
   layers:
   - Default
   - TransparentFX
@@ -49,14 +54,14 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: Ground
-    uniqueID: 3277990563
+    uniqueID: 1318185963
     locked: 0
-  - name: Background
-    uniqueID: 3072431375
+  - name: Wall
+    uniqueID: 2588511727
     locked: 0
   - name: Entity
-    uniqueID: 285613901
+    uniqueID: 3915512995
     locked: 0
   - name: UI
-    uniqueID: 3633533023
+    uniqueID: 617962043
     locked: 0

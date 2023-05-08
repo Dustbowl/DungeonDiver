@@ -27,7 +27,7 @@ public class EntityManager : MonoBehaviour
 
     public void SpawnEnemies(Dictionary<Vector2Int, HashSet<Vector2Int>> roomDictionary)
     {
-        ClearEnemies();
+        ClearEntities("Enemy");
         HashSet<Vector3Int> enemySpawnPoints = new HashSet<Vector3Int>();
         foreach(HashSet<Vector2Int> room in roomDictionary.Values)
         {
@@ -51,19 +51,20 @@ public class EntityManager : MonoBehaviour
             Instantiate(GetRandomEnemy(), spawnPoint, Quaternion.identity);
         }
     }
-    private void ClearEnemies()
+    private void ClearEntities(string name)
     {
-        GameObject[] expiredEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach(GameObject enemy in expiredEnemies)
+        GameObject[] expiredEntities = GameObject.FindGameObjectsWithTag(name);
+        foreach(GameObject entity in expiredEntities)
         {
-            Destroy(enemy); //for actual use
-            //DestroyImmediate(enemy); //for dev use;
+            Destroy(entity); //for actual use
+            //DestroyImmediate(entity); //for dev use;
         }
     }
     public void PlaceExit(Dictionary<Vector2Int, HashSet<Vector2Int>> roomDictionary)
     {
-        GameObject oldExit = GameObject.FindWithTag("Exit");
-        Destroy(oldExit);
+        ClearEntities("Exit");
+        //GameObject oldExit = GameObject.FindWithTag("Exit");
+        //Destroy(oldExit);
         List<Vector2Int> roomCenters = new List<Vector2Int>(roomDictionary.Keys);
         Vector3Int position = (Vector3Int)roomCenters[Random.Range(0, roomCenters.Count)] + Vector3Int.back;
         GameObject newExit = Instantiate(exit, position, Quaternion.identity);
